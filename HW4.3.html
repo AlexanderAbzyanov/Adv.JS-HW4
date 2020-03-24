@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HW4.3</title>
+</head>
+<body>
+	<p>Введите свое имя</p>
+	<input type="text" name="input" id="name" value="Name">
+	<p>Введите свой номер телефона</p>
+	<input type="text" name="input" id="telephonNumber" value="+7(000)000-0000">
+	<p>Введите адрес электронной почты</p>
+	<input type="text" name="input" id="Email" value="mymail@mail.ru">
+	<p>Введите свои пожелания по нашему сервису (Рекомендуемый объем - не более 200 знаков.)</p>
+	<input type="text" name="input" id="userRequest" value="Здесь - Ваши пожелания по качеству услуг.">
+	<br>
+	<br>
+	<br>
+	<button id="button" value="Отправка">Отправить данные на сервер</button>
+
+    
+<script>
+    // Ввод данных пользователя в программу
+    let userName = document.getElementById ("name");
+    console.log (userName.value);
+    let userTelephonNumber = document.getElementById ("telephonNumber");
+    console.log (userTelephonNumber.value);
+    let userEmail = document.getElementById ("Email");
+    console.log (userEmail.value);
+    let userRequest = document.getElementById ("userRequest");
+    console.log (userRequest.value);
+    // Проверка и валидация введенных данных
+    let flag = true;
+    let event = document.getElementById ("button");
+    console.log (event.value);
+    button.onclick = function() {
+        flag = true;
+    	if (/^[a-zА-Я]+$/ig.test(userName.value)) {
+    		console.log ('Имя введено верно');
+    		userName.style.borderColor = 'grey';
+    	} else {
+    		console.log ("Имя введено неправильно");
+    		userName.style.borderColor = 'red';
+            flag = false;
+    	}
+
+    	if (/^\+7\([0-9]{3}\)[0-9]{3}-[0-9]{4}$/ig.test(userTelephonNumber.value)) {
+    		console.log ('Номер телефона введен верно');
+    		userTelephonNumber.style.borderColor = 'grey';
+    	} else {
+    		console.log ("Номер телефона введен неправильно");
+    		userTelephonNumber.style.borderColor = 'red';
+            flag = false;
+    	}
+    	
+    	if (/^[a-z0-9]*[.-]?[a-z0-9]*@mail.ru$/ig.test(userEmail.value)) {
+    		console.log ('Email введен верно');
+    		userEmail.style.borderColor = 'grey';
+    	} else {
+    		console.log ("Email введен неправильно");
+    		userEmail.style.borderColor = 'red';
+            flag = false;
+    	}
+    	
+    	if (/^.{0,200}$/ig.test(userRequest.value)) {
+    		console.log ('Текст введен верно');
+    		userRequest.style.borderColor = 'grey';
+    		} else {
+    		console.log ("Текст введен неверно");
+    		userRequest.style.borderColor = 'red';
+            flag = false;
+    	}
+        if (flag === false) {
+    	alert ('Одно из полей заполнено неверно (выделено красным цветом). Введите повторно и нажмите кнопку "Отправить"');
+    	
+        }    
+    }
+</script>
+</body>
+</html>
